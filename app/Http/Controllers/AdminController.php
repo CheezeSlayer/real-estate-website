@@ -19,4 +19,19 @@ class AdminController extends Controller
     public function create() {
         return view('admin.home.create');
     }
+
+    public function store(Request $request) {
+        $data = $request->validate([
+            'province' => 'required|not_in:choose',
+            'city' => 'required',
+            'address' => 'required',
+            'zip_postal' => 'required',
+            'type' => 'required',
+            'bedroom' => 'required',
+            'bathroom' => 'required',
+            'floor_space' => 'required',
+            'price' => 'required',
+        ]);
+        dd($data);
+    }
 }

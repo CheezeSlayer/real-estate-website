@@ -23,3 +23,5 @@ Route::get('/buy', 'BuyController@index')->name('buy');
 
 Route::get('/admin', 'AdminController@index');
 Route::get('/admin/create', 'AdminController@create');
+
+Route::post('/admin', 'AdminController@store');
