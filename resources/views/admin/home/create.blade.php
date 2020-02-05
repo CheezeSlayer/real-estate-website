@@ -1,7 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+
+<div class="container" id="status">
+    <div class="row justify-content-center">
+        <div class="card">
+            @if(session('success'))
+                <div class="card-header text-success">{{ session('success') }}</div>
+            @endif
+            @if(session('error'))
+                <div class="card-header text-danger">{{ session('error') }}</div>
+            @endif
+        </div>
+    </div>
+</div>
+
+<div class="container pt-2">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -55,11 +69,11 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="zip_postal">Zip / Postal code</label>
-                            <input name="zip_postal" type="text" class="form-control" id="zip_postal" value="{{old('zip_postal')}}"
-                                aria-describedby="zip_postalHelp" placeholder="Zip / Postal code">
-                            <small id="zip_postalHelp" class="form-text text-muted">Enter the home city</small>
-                            @error('zip_postal')
+                            <label for="postal_code">Zip / Postal code</label>
+                            <input name="postal_code" type="text" class="form-control" id="postal_code" value="{{old('postal_code')}}"
+                                aria-describedby="postal_codeHelp" placeholder="Zip / Postal code">
+                            <small id="postal_codeHelp" class="form-text text-muted">Enter the home city</small>
+                            @error('postal_code')
                             <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
@@ -95,20 +109,20 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col">
-                                    <label for="bedroom">Bedrooms</label>
-                                    <input name="bedroom" type="number" class="form-control" id="bedroom" min="1" value="{{old('bedroom')}}"
-                                        aria-describedby="bedroomHelp" placeholder="# Bedrooms">
-                                    <small id="bedroomHelp" class="form-text text-muted">Enter number of bedrooms</small>
-                                    @error('bedroom')
+                                    <label for="bedrooms">Bedrooms</label>
+                                    <input name="bedrooms" type="number" class="form-control" id="bedrooms" min="1" value="{{old('bedrooms')}}"
+                                        aria-describedby="bedroomsHelp" placeholder="# bedrooms">
+                                    <small id="bedroomsHelp" class="form-text text-muted">Enter number of bedrooms</small>
+                                    @error('bedrooms')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
                                 <div class="col">
-                                    <label for="bathroom">Bathrooms</label>
-                                    <input name="bathroom" type="number" class="form-control" id="bathroom" min="1" value="{{old('bathroom')}}"
-                                        aria-describedby="bathroomHelp" placeholder="# Bathrooms">
-                                    <small id="bathroomHelp" class="form-text text-muted">Enter number of bathrooms</small>
-                                    @error('bathroom')
+                                    <label for="bathrooms">Bathrooms</label>
+                                    <input name="bathrooms" type="number" class="form-control" id="bathrooms" min="1" value="{{old('bathrooms')}}"
+                                        aria-describedby="bathroomsHelp" placeholder="# bathrooms">
+                                    <small id="bathroomsHelp" class="form-text text-muted">Enter number of bathrooms</small>
+                                    @error('bathrooms')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
