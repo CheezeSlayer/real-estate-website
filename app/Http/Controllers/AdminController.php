@@ -42,6 +42,8 @@ class AdminController extends Controller
 
         $home = \DB::table('homes')->where($query)->exists();
 
+        // dd($request->session()->all());
+
         if( $home == true ) {
             return redirect('/admin/create')->with('error', 'Record Already Exists')->withInput();
         }

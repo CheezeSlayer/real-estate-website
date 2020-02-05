@@ -28,19 +28,19 @@
                             <label for="province">Province</label>
                             <select name="province" id="province" class="form-control" id="province" aria-describedby="provinceHelp" placeholder="Province...">
                                 <option value="choose" selected>Province...</option>
-                                <option value="AB">Alberta</option>
-                                <option value="BC">British Columbia</option>
-                                <option value="MB">Manitoba</option>
-                                <option value="NB">New Brunswick</option>
-                                <option value="NL">Newfoundland and Labrador</option>
-                                <option value="NS">Nova Scotia</option>
-                                <option value="ON">Ontario</option>
-                                <option value="PE">Prince Edward Island</option>
-                                <option value="QC">Quebec</option>
-                                <option value="SK">Saskatchewan</option>
-                                <option value="NT">Northwest Territories</option>
-                                <option value="NU">Nunavut</option>
-                                <option value="YT">Yukon</option>
+                                <option value="AB" {{ old('province') == 'AB' ? 'selected' : ''}}>Alberta</option>
+                                <option value="BC" {{ old('province') == 'BC' ? 'selected' : ''}}>British Columbia</option>
+                                <option value="MB" {{ old('province') == 'MB' ? 'selected' : ''}}>Manitoba</option>
+                                <option value="NB" {{ old('province') == 'NB' ? 'selected' : ''}} >New Brunswick</option>
+                                <option value="NL" {{ old('province') == 'NL' ? 'selected' : ''}}>Newfoundland and Labrador</option>
+                                <option value="NS" {{ old('province') == 'NS' ? 'selected' : ''}}>Nova Scotia</option>
+                                <option value="ON" {{ old('province') == 'ON' ? 'selected' : ''}}>Ontario</option>
+                                <option value="PE" {{ old('province') == 'PE' ? 'selected' : ''}}>Prince Edward Island</option>
+                                <option value="QC" {{ old('province') == 'QC' ? 'selected' : ''}}>Quebec</option>
+                                <option value="SK" {{ old('province') == 'SK' ? 'selected' : ''}}>Saskatchewan</option>
+                                <option value="NT" {{ old('province') == 'NT' ? 'selected' : ''}}>Northwest Territories</option>
+                                <option value="NU" {{ old('province') == 'NU' ? 'selected' : ''}}>Nunavut</option>
+                                <option value="YT" {{ old('province') == 'YT' ? 'selected' : ''}}>Yukon</option>
                             </select>
 
                             @error('province')
@@ -81,25 +81,25 @@
                         <div class="form-group">
                             <label for="type">Type of Housing</label>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="type" id="type_house" value="house">
+                                <input class="form-check-input" type="radio" name="type" id="type_house" value="house" {{ old('type') == 'house' ? 'checked' : ''}}>
                                 <label class="form-check-label" for="type_house">
                                     House
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="type" id="type_duplex" value="duplex">
+                                <input class="form-check-input" type="radio" name="type" id="type_duplex" value="duplex" {{ old('type') == 'duplex' ? 'checked' : ''}}>
                                 <label class="form-check-label" for="type_duplex">
                                     Duplex
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="type" id="type_townhouse" value="townhouse">
+                                <input class="form-check-input" type="radio" name="type" id="type_townhouse" value="townhouse" {{ old('type') == 'townhouse' ? 'checked' : ''}}>
                                 <label class="form-check-label" for="type_townhouse">
                                     Townhouse
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="type" id="type_apartment" value="apartment">
+                                <input class="form-check-input" type="radio" name="type" id="type_apartment" value="apartment" {{ old('type') == 'apartment' ? 'checked' : ''}}>
                                 <label class="form-check-label" for="type_apartment">
                                     Apartment
                                 </label>
