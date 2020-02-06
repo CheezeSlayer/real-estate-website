@@ -32,23 +32,25 @@ class AdminController extends Controller
             'floor_space' => 'required',
             'price' => 'required',
         ]);
-
         $query = [
             ['province', '=', $data['province']],
             ['city', '=', $data['city']],
             ['address', '=', $data['address']],
             ['postal_code', '=', $data['postal_code']],
         ];
-
         $home = \DB::table('homes')->where($query)->exists();
-
-        // dd($request->session()->all());
-
         if( $home == true ) {
-            return redirect('/admin/create')->with('error', 'Record Already Exists')->withInput();
+            return redirect('/admin/home/create')->with('error', 'Record Already Exists')->withInput();
         }
         $home = auth()->user()->home()->create($data);
         return redirect('/admin')->with('success', 'New Home Registered');
-        
+    }
+
+    public function show() {
+        $homes = \App\Home::all();
+        foreach($homes as $home) {
+            $home->price = number_format($home->price);
+        }
+        return view('admin.home.list', compact('homes'));
     }
 }
