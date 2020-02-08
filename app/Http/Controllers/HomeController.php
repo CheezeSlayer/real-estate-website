@@ -20,8 +20,16 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function show(\App\Home $home)
     {
-        return view('home');
+        return view('admin.home.show', compact('home'));
+    }
+
+    public function list() {
+        $homes = \App\Home::all();
+        foreach($homes as $home) {
+            $home->price = number_format($home->price);
+        }
+        return view('admin.home.list', compact('homes'));
     }
 }

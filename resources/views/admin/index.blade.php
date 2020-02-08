@@ -22,7 +22,6 @@
             <div class="card-body">
                 <div class="list-group">
                     <a href="/admin/home/create" class="list-group-item list-group-item-action">Add Home</a>
-                    <a href="/admin/home/list" class="list-group-item list-group-item-action">View Homes</a>
                 </div>
             </div>
         </div>

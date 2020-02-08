@@ -45,12 +45,4 @@ class AdminController extends Controller
         $home = auth()->user()->home()->create($data);
         return redirect('/admin')->with('success', 'New Home Registered');
     }
-
-    public function show() {
-        $homes = \App\Home::all();
-        foreach($homes as $home) {
-            $home->price = number_format($home->price);
-        }
-        return view('admin.home.list', compact('homes'));
-    }
 }

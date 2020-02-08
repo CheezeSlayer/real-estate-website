@@ -177,7 +177,7 @@ a {
 
 a:hover {
   color: #1d68a7;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 a:not([href]) {
@@ -5240,6 +5240,12 @@ input[type=button].btn-block {
   background-color: #fff;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
+  transition: border 0.5s;
+  border-radius: 0.25rem;
+}
+
+.card:hover {
+  border: 1px solid rgba(0, 0, 0, 0.603);
   border-radius: 0.25rem;
 }
 
