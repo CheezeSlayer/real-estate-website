@@ -24,7 +24,7 @@ class CreateHomesTable extends Migration
             $table->unsignedInteger ('bedrooms');
             $table->unsignedInteger ('floor_space');
             $table->unsignedBigInteger('price');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
         });
     }

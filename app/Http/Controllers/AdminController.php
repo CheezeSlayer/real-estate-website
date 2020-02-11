@@ -45,4 +45,9 @@ class AdminController extends Controller
         $home = auth()->user()->home()->create($data);
         return redirect('/admin')->with('success', 'New Home Registered');
     }
+
+    public function destroy(\App\Home $home) {
+        $home->delete();
+        return redirect()->action('HomeController@list');
+    }
 }
