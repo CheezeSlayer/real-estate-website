@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         @foreach($homes as $home)
             <div class="card m-2">
-                <a href="/admin/home/list/{{$home->id}}">
+                <a href="/home/{{$home->id}}">
                 <div class="card-body">
                     <ul class="list-group">
                         <li class="list-group-item border-0 py-0 text-dark h1">${{ $home->price }}</li>

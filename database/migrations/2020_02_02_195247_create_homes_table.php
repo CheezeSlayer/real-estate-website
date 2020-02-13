@@ -14,7 +14,7 @@ class CreateHomesTable extends Migration
     public function up()
     {
         Schema::create('homes', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('id')->unique();
             $table->string('province');
             $table->string('city');
             $table->string('address');
@@ -24,6 +24,7 @@ class CreateHomesTable extends Migration
             $table->unsignedInteger ('bedrooms');
             $table->unsignedInteger ('floor_space');
             $table->unsignedBigInteger('price');
+            $table->longText('description')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
         });

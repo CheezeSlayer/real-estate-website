@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Home;
 
 class AdminController extends Controller
 {
@@ -16,10 +17,6 @@ class AdminController extends Controller
         return view('admin.index');
     }
 
-    public function create() {
-        return view('admin.home.create');
-    }
-
     public function store(Request $request) {
         $data = $request->validate([
             'province' => 'required|not_in:choose',
@@ -31,6 +28,7 @@ class AdminController extends Controller
             'bathrooms' => 'required',
             'floor_space' => 'required',
             'price' => 'required',
+            'description' => 'required'
         ]);
         $query = [
             ['province', '=', $data['province']],
@@ -46,8 +44,35 @@ class AdminController extends Controller
         return redirect('/admin')->with('success', 'New Home Registered');
     }
 
-    public function destroy(\App\Home $home) {
+    public function destroy(Home $home) {
         $home->delete();
         return redirect()->action('HomeController@list');
+    }
+
+    public function update(Home $home, Request $request) {
+        $data = $request->validate([
+            'province' => 'required|not_in:choose',
+            'city' => 'required',
+            'address' => 'required',
+            'postal_code' => 'required',
+            'type' => 'required',
+            'bedrooms' => 'required',
+            'bathrooms' => 'required',
+            'floor_space' => 'required',
+            'price' => 'required',
+            'description' => 'required'
+        ]);
+        $query = [
+            ['province', '=', $data['province']],
+            ['city', '=', $data['city']],
+            ['address', '=', $data['address']],
+            ['postal_code', '=', $data['postal_code']],
+        ];
+        $home_exists = \DB::table('homes')->where($query)->exists();
+        if( $home_exists == true ) {
+            return redirect()->back()->with('error', 'Record Already Exists')->withInput();
+        }
+        $home->save($data);
+        return redirect()->back()->with('success', 'Home Updated');
     }
 }

@@ -32,4 +32,12 @@ class HomeController extends Controller
         }
         return view('admin.home.list', compact('homes'));
     }
+
+    public function create() {
+        return view('admin.home.create');
+    }
+
+    public function edit(\App\Home $home) {
+        return view('admin.home.edit', compact('home'));
+    }
 }

@@ -21,11 +21,14 @@ Auth::routes();
 //Route::get('/home', 'AdminController@index')->name('admin');
 
 Route::get('/home/list', 'HomeController@list')->name('buy');
+Route::get('/home/{home}', 'HomeController@show');
 
 Route::get('/admin', 'AdminController@index')->name('admin')->middleware('is_admin');
-Route::post('/admin', 'AdminController@store');
 
-Route::get('/admin/home/list/{home}', 'HomeController@show');
+Route::get('/admin/home/create', 'HomeController@create');
+Route::post('/admin/home/store', 'AdminController@store');
 
-Route::get('/admin/home/create', 'AdminController@create');
-Route::delete('/home/list/{home}/delete', 'AdminController@destroy');
+Route::get('/admin/home/{home}/edit', 'HomeController@edit');
+Route::post('/admin/home/{home}/update', 'AdminController@update');
+
+Route::delete('/admin/home/{home}/delete', 'AdminController@destroy');

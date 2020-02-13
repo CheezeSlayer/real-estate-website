@@ -2,32 +2,48 @@
 @section('content') 
 
 <div class="container w-50">
-    <div class="card">
+    <div class="card border">
         <div class="card-header">
             <div class="row justify-content-center">
                 <div class="col">
                     <div class="display-4">${{number_format($home->price)}}</div>
                     <div class="h4">{{$home->address}}, {{$home->city}}, {{$home->province}}, {{$home->postal_code}}</div>
                 </div>
-                <div class="col-5">
-                    <div class="h4 float-right">Bathrooms: {{$home->bathrooms}}<br>Bedrooms: {{$home->bedrooms}}</div>
-                </div>
             </div>
         </div>
-        <div class="card-body m-3">
+        <div class="card-body">
             <div class="row">
-                <div class="h1">About This Property:</div>
+                <div class="col">
+                    <h4 class="font-weight-light">{{ ucwords($home->type) }}</h4>
+                </div>
             </div>
             <div class="row">
-                <div class="h4">Write something interesting about this property</div>
+                <div class="col">
+                    <h4 class="font-weight-light">Bedrooms: {{$home->bedrooms}} Bathrooms: {{$home->bathrooms}}</h4>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col">
+                    <h4>Property Information:</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p>{{ $home->description }}</p>
+                </div>
             </div>
         </div>
         <div class="card-footer">
             @if(Auth::user()->is_admin)
-                <form action="/home/list/{{ $home->id }}/delete" method="post">
+                <form action="/admin/home/{{ $home->id }}/delete" method="post">
                     @method('DELETE')
                     @csrf
-                    <button type="submit" class="float-right btn btn-sm btn-outline-danger">Delete Home</button>
+                    <button type="submit" class="float-right btn btn-sm btn-outline-danger m-2">Delete</button>
+                </form>
+                <form action="/admin/home/{{ $home->id }}/edit" method="get">
+                    @csrf
+                    <button type="submit" class="float-right btn btn-sm btn-outline-secondary m-2">Edit</button>
                 </form>
             @endif
         </div>
