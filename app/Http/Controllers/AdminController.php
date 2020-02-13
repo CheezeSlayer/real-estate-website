@@ -71,8 +71,20 @@ class AdminController extends Controller
         $home_exists = \DB::table('homes')->where($query)->exists();
         if( $home_exists == true ) {
             return redirect()->back()->with('error', 'Record Already Exists')->withInput();
-        }
-        $home->save($data);
-        return redirect()->back()->with('success', 'Home Updated');
+        };
+        $home->fill([
+            'province' => $data['province'],
+            'city' =>  $data['city'],
+            'address' =>  $data['address'],
+            'postal_code' =>  $data['postal_code'],
+            'type' =>  $data['type'],
+            'bedrooms' =>  $data['bedrooms'],
+            'bathrooms' =>  $data['bathrooms'],
+            'floor_space' =>  $data['floor_space'],
+            'price' =>  $data['price'],
+            'description' =>  $data['description']
+        ]);
+        $home->save();
+        return redirect()->back()->withInput($request->flash())->with('success', 'Home Updated');
     }
 }

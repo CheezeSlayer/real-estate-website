@@ -28,19 +28,19 @@
                             <label for="province">Province</label>
                             <select name="province" id="province" class="form-control" id="province" aria-describedby="provinceHelp" placeholder="Province...">
                                 <option value="choose" selected>Province...</option>
-                                <option value="AB" {{ old('province') == 'AB' ? 'selected' : ($home->province == 'AB' ? 'selected' : '')}}>Alberta</option>
-                                <option value="BC" {{ old('province') == 'BC' ? 'selected' : ($home->province == 'BC' ? 'selected' : '')}}>British Columbia</option>
-                                <option value="MB" {{ old('province') == 'MB' ? 'selected' : ($home->province == 'MB' ? 'selected' : '')}}>Manitoba</option>
-                                <option value="NB" {{ old('province') == 'NB' ? 'selected' : ($home->province == 'NB' ? 'selected' : '')}} >New Brunswick</option>
-                                <option value="NL" {{ old('province') == 'NL' ? 'selected' : ($home->province == 'NL' ? 'selected' : '')}}>Newfoundland and Labrador</option>
-                                <option value="NS" {{ old('province') == 'NS' ? 'selected' : ($home->province == 'NS' ? 'selected' : '')}}>Nova Scotia</option>
-                                <option value="ON" {{ old('province') == 'ON' ? 'selected' : ($home->province == 'ON' ? 'selected' : '')}}>Ontario</option>
-                                <option value="PE" {{ old('province') == 'PE' ? 'selected' : ($home->province == 'PE' ? 'selected' : '')}}>Prince Edward Island</option>
-                                <option value="QC" {{ old('province') == 'QC' ? 'selected' : ($home->province == 'QC' ? 'selected' : '')}}>Quebec</option>
-                                <option value="SK" {{ old('province') == 'SK' ? 'selected' : ($home->province == 'SK' ? 'selected' : '')}}>Saskatchewan</option>
-                                <option value="NT" {{ old('province') == 'NT' ? 'selected' : ($home->province == 'NT' ? 'selected' : '')}}>Northwest Territories</option>
-                                <option value="NU" {{ old('province') == 'NU' ? 'selected' : ($home->province == 'NU' ? 'selected' : '')}}>Nunavut</option>
-                                <option value="YT" {{ old('province') == 'YT' ? 'selected' : ($home->province == 'YT' ? 'selected' : '')}}>Yukon</option>
+                                <option value="AB" {{ old('province', $home->province) == 'AB' ? 'selected' : ''}}>Alberta</option>
+                                <option value="BC" {{ old('province', $home->province) == 'BC' ? 'selected' : ''}}>British Columbia</option>
+                                <option value="MB" {{ old('province', $home->province) == 'MB' ? 'selected' : ''}}>Manitoba</option>
+                                <option value="NB" {{ old('province', $home->province) == 'NB' ? 'selected' : ''}} >New Brunswick</option>
+                                <option value="NL" {{ old('province', $home->province) == 'NL' ? 'selected' : ''}}>Newfoundland and Labrador</option>
+                                <option value="NS" {{ old('province', $home->province) == 'NS' ? 'selected' : ''}}>Nova Scotia</option>
+                                <option value="ON" {{ old('province', $home->province) == 'ON' ? 'selected' : ''}}>Ontario</option>
+                                <option value="PE" {{ old('province', $home->province) == 'PE' ? 'selected' : ''}}>Prince Edward Island</option>
+                                <option value="QC" {{ old('province', $home->province) == 'QC' ? 'selected' : ''}}>Quebec</option>
+                                <option value="SK" {{ old('province', $home->province) == 'SK' ? 'selected' : ''}}>Saskatchewan</option>
+                                <option value="NT" {{ old('province', $home->province) == 'NT' ? 'selected' : ''}}>Northwest Territories</option>
+                                <option value="NU" {{ old('province', $home->province) == 'NU' ? 'selected' : ''}}>Nunavut</option>
+                                <option value="YT" {{ old('province', $home->province) == 'YT' ? 'selected' : ''}}>Yukon</option>
                             </select>
 
                             @error('province')
