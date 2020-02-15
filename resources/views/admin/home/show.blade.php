@@ -36,14 +36,13 @@
         </div>
         <div class="card-footer">
             @if(Auth::user()->is_admin)
-                <form action="/admin/home/{{ $home->id }}/delete" method="post">
-                    @method('DELETE')
-                    @csrf
-                    <button type="submit" class="float-right btn btn-sm btn-outline-danger m-2">Delete</button>
-                </form>
+                <button type="button" class="float-right btn btn-sm btn-outline-danger m-2 shadow-none" data-toggle="modal" data-target="#modal-delete-confirm">
+                    Delete
+                </button>
+                @include('admin.home.modals.delete')
                 <form action="/admin/home/{{ $home->id }}/edit" method="get">
                     @csrf
-                    <button type="submit" class="float-right btn btn-sm btn-outline-secondary m-2">Edit</button>
+                    <button type="submit" class="float-right btn btn-sm btn-outline-secondary m-2 shadow-none">Edit</button>
                 </form>
             @endif
         </div>

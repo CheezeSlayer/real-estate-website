@@ -23,7 +23,6 @@
                 <div class="card-body">
                     <form action="/admin/home/store" method="post">
                         @csrf
-
                         <div class="form-group">
                             <label for="province">Province</label>
                             <select name="province" id="province" class="form-control" id="province" aria-describedby="provinceHelp" placeholder="Province...">

@@ -25,10 +25,10 @@ Route::get('/home/{home}', 'HomeController@show');
 
 Route::get('/admin', 'AdminController@index')->name('admin')->middleware('is_admin');
 
-Route::get('/admin/home/create', 'HomeController@create');
-Route::post('/admin/home/store', 'AdminController@store');
+Route::get('/admin/home/create', 'HomeController@create')->middleware('is_admin');
+Route::post('/admin/home/store', 'AdminController@store')->middleware('is_admin');
 
-Route::get('/admin/home/{home}/edit', 'HomeController@edit');
-Route::post('/admin/home/{home}/update', 'AdminController@update');
+Route::get('/admin/home/{home}/edit', 'HomeController@edit')->middleware('is_admin');
+Route::post('/admin/home/{home}/update', 'AdminController@update')->middleware('is_admin');
 
-Route::delete('/admin/home/{home}/delete', 'AdminController@destroy');
+Route::delete('/admin/home/{home}/delete', 'AdminController@destroy')->middleware('is_admin');
