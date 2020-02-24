@@ -22,6 +22,7 @@ Auth::routes();
 
 Route::get('/home/list', 'HomeController@list')->name('buy');
 Route::get('/home/{home}', 'HomeController@show');
+Route::get('/home/list/search', 'HomeController@index');
 
 Route::get('/admin', 'AdminController@index')->name('admin')->middleware('is_admin');
 

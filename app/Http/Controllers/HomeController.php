@@ -40,4 +40,19 @@ class HomeController extends Controller
     public function edit(\App\Home $home) {
         return view('admin.home.edit', compact('home'));
     }
+
+    public function index(Request $request) {
+        $data = $request->validate([
+            'province' => 'required|not_in:choose',
+            'city' => 'required_without_all:address,postal_code,type,bedrooms,bathrooms,floor_space,price',
+            'address' => 'required_without_all:city,postal_code,type,bedrooms,bathrooms,floor_space,price',
+            'postal_code' => 'required_without_all:city,address,type,bedrooms,bathrooms,floor_space,price',
+            'type' => 'required_without_all:city,address,postal_code,bedrooms,bathrooms,floor_space,price',
+            'bedrooms' => 'required_without_all:city,address,postal_code,type,bathrooms,floor_space,price',
+            'bathrooms' => 'required_without_all:city,address,postal_code,type,bedrooms,floor_space,price',
+            'floor_space' => 'required_without_all:city,address,postal_code,type,bedrooms,bathrooms,price',
+            'price' => 'required_without_all:city,address,postal_code,type,bedrooms,bathrooms,floor_space',
+        ]);
+        dd($data);
+    }
 }
