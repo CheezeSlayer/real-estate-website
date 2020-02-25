@@ -20,7 +20,7 @@ Auth::routes();
 //Route::get('/home', 'HomeController@index')->name('home');
 //Route::get('/home', 'AdminController@index')->name('admin');
 
-Route::get('/home/list', 'HomeController@list')->name('buy');
+Route::get('/home/list/', 'HomeController@list')->name('buy');
 Route::get('/home/{home}', 'HomeController@show');
 Route::get('/home/list/search', 'HomeController@index');
 

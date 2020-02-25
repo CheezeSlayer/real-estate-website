@@ -26,8 +26,13 @@
                         </select>
                         <small id="provinceHelp" class="form-text text-muted">Province</small>
                         @error('province')
-                        <small class="text-danger">{{ $message }}</small>
+                            <small class="text-danger">{{ $message }}</small>
                         @enderror
+                    </div>
+                </div>
+                <div>
+                    <div class="form-group">
+                        <h2 class="text-muted"> | </h2>
                     </div>
                 </div>
                 <div class="col">
@@ -35,9 +40,7 @@
                         <input name="city" type="text" class="form-control" id="city" value="{{old('city')}}"
                             aria-describedby="cityHelp" placeholder="City...">
                         <small id="cityHelp" class="form-text text-muted">City</small>
-                        @error('city')
-                        <small class="text-danger">{{ $message }}</small>
-                        @enderror
+                        
                     </div>
                 </div>
                 <div class="col">
@@ -45,9 +48,7 @@
                         <input name="address" type="text" class="form-control" id="address" value="{{old('address')}}"
                             aria-describedby="addressHelp" placeholder="Number + Street">
                         <small id="addressHelp" class="form-text text-muted">Address</small>
-                        @error('address')
-                        <small class="text-danger">{{ $message }}</small>
-                        @enderror
+                        
                     </div>
                 </div>
                 <div class="col">
@@ -55,13 +56,17 @@
                         <input name="postal_code" type="text" class="form-control" id="postal_code" value="{{old('postal_code')}}"
                             aria-describedby="postal_codeHelp" placeholder="Zip / Postal code">
                         <small id="postal_codeHelp" class="form-text text-muted">Postal/Zip Code</small>
-                        @error('postal_code')
-                        <small class="text-danger">{{ $message }}</small>
-                        @enderror
                     </div>
                 </div>
                 <div class="col">
                     <button type="submit" class="btn btn-secondary btn-lg">Search</button>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="card">
+                    @if($errors->has('city') || $errors->has('address') || $errors->has('postal_code'))
+                        <div class="card-header text-danger">At least one field input is required</div>
+                    @endif
                 </div>
             </div>
         </form>

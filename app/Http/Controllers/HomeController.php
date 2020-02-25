@@ -26,7 +26,12 @@ class HomeController extends Controller
     }
 
     public function list() {
-        $homes = \App\Home::all();
+        
+        // dd($homes);
+        if( empty($homes) ) {
+            $homes = \App\Home::all();
+        }
+
         foreach($homes as $home) {
             $home->price = number_format($home->price);
         }
@@ -41,6 +46,10 @@ class HomeController extends Controller
         return view('admin.home.edit', compact('home'));
     }
 
+    private function is_not_null($var) {
+        return !is_null($var);
+    }
+
     public function index(Request $request) {
         $data = $request->validate([
             'province' => 'required|not_in:choose',
@@ -53,6 +62,20 @@ class HomeController extends Controller
             'floor_space' => 'required_without_all:city,address,postal_code,type,bedrooms,bathrooms,price',
             'price' => 'required_without_all:city,address,postal_code,type,bedrooms,bathrooms,floor_space',
         ]);
-        dd($data);
+
+        $homes_query = \DB::table('homes')->where('province', '=', $data['province']);
+        
+        if( $data['city'] != null ) {
+            $homes_query->where('city', '=', $data['city']);
+        }
+        if( $data['address'] != null ) {
+            $homes_query->where('address', '=', $data['address']);
+        }
+        if( $data['postal_code'] != null ) {
+            $homes_query->where('postal_code', '=', $data['postal_code']);
+        }
+        $homes = $homes_query->get();
+
+        return view('admin.home.list', compact('homes'))->withInput($request->flash());
     }
 }
