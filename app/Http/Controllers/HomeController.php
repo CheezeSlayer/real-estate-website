@@ -62,19 +62,25 @@ class HomeController extends Controller
             'floor_space' => 'required_without_all:city,address,postal_code,type,bedrooms,bathrooms,price',
             'price' => 'required_without_all:city,address,postal_code,type,bedrooms,bathrooms,floor_space',
         ]);
-
-        $homes_query = \DB::table('homes')->where('province', '=', $data['province']);
         
-        if( $data['city'] != null ) {
-            $homes_query->where('city', '=', $data['city']);
-        }
-        if( $data['address'] != null ) {
-            $homes_query->where('address', '=', $data['address']);
-        }
-        if( $data['postal_code'] != null ) {
-            $homes_query->where('postal_code', '=', $data['postal_code']);
-        }
-        $homes = $homes_query->get();
+        $query = [];
+        $data = array_filter($data, array($this, "is_not_null"));
+        foreach($data as $key => $attribute) {
+            array_push($query, [$key, '=', $data[$key]] );
+        };
+
+        $homes= \DB::table('homes')->where($query)->get();
+        
+        // if( $data['city'] != null ) {
+        //     $homes_query->where('city', '=', $data['city']);
+        // }
+        // if( $data['address'] != null ) {
+        //     $homes_query->where('address', '=', $data['address']);
+        // }
+        // if( $data['postal_code'] != null ) {
+        //     $homes_query->where('postal_code', '=', $data['postal_code']);
+        // }
+        // $homes = $homes_query->get();
 
         return view('admin.home.list', compact('homes'))->withInput($request->flash());
     }

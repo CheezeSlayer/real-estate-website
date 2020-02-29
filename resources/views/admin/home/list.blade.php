@@ -8,10 +8,15 @@
         @foreach($homes as $home)
         <div class="col-sm-4">
             <div class="card m-2" id="home{{$home->id}}">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col text-dark h1">${{ $home->price }}</div>
+                        <div class="col text-dark font-weight-bold" align="right">{{ ucfirst($home->type) }}</div>
+                    </div>
+                </div>
                 <a href="/home/{{$home->id}}">
                 <div class="card-body">
                     <ul class="list-group">
-                        <li class="list-group-item border-0 py-0 text-dark h1">${{ $home->price }}</li>
                         <li class="list-group-item border-0 py-0 text-secondary">{{ $home->address }}</li>
                         <li class="list-group-item border-0 py-0 text-secondary">{{ $home->city }}, {{ $home->province }}</li>
                         <li class="list-group-item border-0 py-0 text-secondary">Bedrooms: {{ $home->bedrooms }}</li>
