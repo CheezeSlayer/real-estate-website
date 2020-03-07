@@ -53,35 +53,23 @@ class HomeController extends Controller
     public function index(Request $request) {
         $data = $request->validate([
             'province' => 'required|not_in:choose',
-            'city' => 'required_without_all:address,postal_code,type,bedrooms,bathrooms,floor_space,price',
-            'address' => 'required_without_all:city,postal_code,type,bedrooms,bathrooms,floor_space,price',
-            'postal_code' => 'required_without_all:city,address,type,bedrooms,bathrooms,floor_space,price',
-            'type' => 'required_without_all:city,address,postal_code,bedrooms,bathrooms,floor_space,price',
-            'bedrooms' => 'required_without_all:city,address,postal_code,type,bathrooms,floor_space,price',
-            'bathrooms' => 'required_without_all:city,address,postal_code,type,bedrooms,floor_space,price',
-            'floor_space' => 'required_without_all:city,address,postal_code,type,bedrooms,bathrooms,price',
-            'price' => 'required_without_all:city,address,postal_code,type,bedrooms,bathrooms,floor_space',
+            'city' => 'required',
+            'address' => 'nullable',
+            'postal_code' => 'nullable',
+            'type' => 'nullable|not_in:choose',
+            'bedrooms' => 'nullable',
+            'bathrooms' => 'nullable',
+            'floor_space' => 'nullable',
+            'price' => 'nullable',
+
+            // 'toggle_advanced_options' => 'nullable'
         ]);
-        
         $query = [];
         $data = array_filter($data, array($this, "is_not_null"));
         foreach($data as $key => $attribute) {
             array_push($query, [$key, '=', $data[$key]] );
         };
-
         $homes= \DB::table('homes')->where($query)->get();
-        
-        // if( $data['city'] != null ) {
-        //     $homes_query->where('city', '=', $data['city']);
-        // }
-        // if( $data['address'] != null ) {
-        //     $homes_query->where('address', '=', $data['address']);
-        // }
-        // if( $data['postal_code'] != null ) {
-        //     $homes_query->where('postal_code', '=', $data['postal_code']);
-        // }
-        // $homes = $homes_query->get();
-
         return view('admin.home.list', compact('homes'))->withInput($request->flash());
     }
 }

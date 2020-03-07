@@ -12,7 +12,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset ('js/functions.js') }}"></script>
-
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -22,66 +22,81 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md sticky-top navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/home/list') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('buy') }}">Buy</a>
-                        </li>
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-                                     aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    @if(Auth::user()->is_admin)
-                                        <a class="dropdown-item" href="{{ route('admin') }}">
-                                            {{ __('Dashboard') }}
-                                        </a>
-                                    @endif
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
+        <nav class="flex items-center justify-between flex-wrap bg-gray-800 p-2 px-24">
+            <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+              @guest
+                <div class="text-sm lg:flex-grow">
+                  <a href="{{ route('login') }}" class="block mt-4 lg:inline-block lg:mt-0 text-orange-500 hover:text-white mr-2">
+                    SIGN IN
+                  </a>
+                  <span class="block mt-4 lg:inline-block lg:mt-0 text-orange-500 hover:text-white mr-2">|</span>
+                  @if (Route::has('register'))
+                    <a href="{{ route('register') }}" class="block mt-4 lg:inline-block lg:mt-0 text-orange-500 hover:text-white mr-4">
+                      SIGN UP
+                    </a>
+                  @endif
                 </div>
-            </div>
-        </nav>
+              @else
+                <div class="text-sm lg:flex-grow">
+                  <a href="{{ route('logout') }}"  class="block mt-4 lg:inline-block lg:mt-0 text-orange-500 hover:text-white mr-2"
+                  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    SIGN OUT
+                  </a>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                  </form>
 
-        <main class="py-4">
+                  <span class="block mt-4 lg:inline-block lg:mt-0 text-orange-500 hover:text-white mr-2">|</span>
+                  @if (Auth::user()->is_admin)
+                    <a href="{{ route('admin') }}" class="block mt-4 lg:inline-block lg:mt-0 text-orange-500 hover:text-white mr-4">
+                      DASHBOARD
+                    </a>
+                  @endif
+                </div>
+              @endguest
+              <div>
+                <a href="//facebook.com/" class="block mt-4 lg:inline-block lg:mt-0 text-orange-500 hover:text-white mr-2">
+                    <i class='fab fa-facebook' style='font-size:24px'></i>
+                </a>
+                <a href="//instagram.com/" class="block mt-4 lg:inline-block lg:mt-0 text-orange-500 hover:text-white mr-2">
+                    <i class='fab fa-instagram' style='font-size:24px'></i>
+                </a>
+                <a href="//linkedin.com/" class="block mt-4 lg:inline-block lg:mt-0 text-orange-500 hover:text-white mr-2">
+                    <i class='fab fa-linkedin' style='font-size:24px'></i>
+                </a>
+                <a href="//twitter.com/" class="block mt-4 lg:inline-block lg:mt-0 text-orange-500 hover:text-white mr-2">
+                    <i class='fab fa-twitter' style='font-size:24px'></i>
+                </a>
+              </div>
+            </div>
+          </nav>
+          <nav class="flex items-center justify-between flex-wrap bg-gray-700 p-2 px-24">
+            <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto shadow-xl">
+              <div class="text-xl lg:flex-grow">
+                <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-orange-500 hover:text-white mr-2">
+                    <img src='{{ asset('images/logo.png') }}'>
+                </a>
+              </div>
+              <div>
+                <a href="/home/list/" class="block mt-4 lg:inline-block lg:mt-0 text-orange-500 hover:text-white mr-2">
+                    FIND A HOME
+                </a>
+                <span class="block mt-4 lg:inline-block lg:mt-0 text-orange-500 hover:text-white mr-2">|</span>
+                <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-orange-500 hover:text-white mr-2">
+                    FIND AN AGENT
+                </a>
+                <span class="block mt-4 lg:inline-block lg:mt-0 text-orange-500 hover:text-white mr-2">|</span>
+                <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-orange-500 hover:text-white mr-2">
+                    CAREERS
+                </a>
+                <span class="block mt-4 lg:inline-block lg:mt-0 text-orange-500 hover:text-white mr-2">|</span>
+                <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-orange-500 hover:text-white mr-2">
+                    CONTACT
+                </a>
+              </div>
+            </div>
+          </nav>
+        <main class="h-screen bg-gray-700">
             @yield('content')
         </main>
     </div>

@@ -2,29 +2,23 @@
 
 @section('content')
 
-<div class="container" id="status">
-    <div class="row justify-content-center">
-        <div class="card">
-            @if(session('success'))
-                <div class="card-header text-success">{{ session('success') }}</div>
-            @endif
-            @if(session('error'))
-                <div class="card-header text-danger">{{ session('error') }}</div>
-            @endif
-        </div>
-    </div>
+<div class="flex justify-center" id="status">
+    @if(session('success'))
+        <div class="flex-initial p-2 m-2 bg-gray-800 rounded text-base text-semibold text-center text-green-500">{{ session('success') }}</div>
+    @endif
+    @if(session('error'))
+        <div class="flex-initial p-2 m-2 bg-gray-800 rounded text-base text-semibold text-center text-red-500">{{ session('error') }}</div>
+    @endif
 </div>
 
-<div class="container pt-2">
-    <div class="row justify-content-center">
-        <div class="card">
-            <div class="card-header">What Would You Like to Do?</div>
-            <div class="card-body">
-                <div class="list-group">
-                    <a href="/admin/home/create" class="list-group-item list-group-item-action">Add Home</a>
+<div class="mx-auto flex justify-center items-center pt-6">
+    <div class="w-96 bg-gray-800 rounded-lg shadow-xl p-6 text-center">
+        <div class="text-semibold text-xl text-orange-500 pb-8">What Would You Like to Do?</div>
+            <a href="/admin/home/create" class="list-group-item list-group-item-action">
+                <div class="bg-gray-700 rounded text-lg text-orange-500 p-2 hover:bg-gray-600 hover:text-gray-100">
+                    Add Home
                 </div>
-            </div>
-        </div>
+            </a>
     </div>
 </div>
 @endsection
