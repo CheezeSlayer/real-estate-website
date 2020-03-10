@@ -30,7 +30,7 @@
                     <div class="">
                         <input name="city" type="text" class="w-full rounded p-2 bg-gray-800" id="city" value="{{old('city')}}"
                             aria-describedby="cityHelp" placeholder="City...">
-                        <small id="cityHelp" class="form-text text-muted">City</small>
+                        <small id="cityHelp" class="form-text text-muted">City *</small>
                     </div>
                 </div>
                 <div class="p-2">
@@ -87,8 +87,8 @@
                 @if($errors->has('province'))
                     <div class="flex-initial p-2 m-2 bg-gray-800 rounded text-base text-semibold text-center text-red-500">Invalid Province</div>
                 @endif
-                @if($errors->has('city') || $errors->has('address') || $errors->has('postal_code'))
-                    <div class="flex-initial p-2 m-2 bg-gray-800 rounded text-base text-semibold text-center text-red-500">At least one field input is required</div>
+                @if($errors->has('city'))
+                    <div class="flex-initial p-2 m-2 bg-gray-800 rounded text-base text-semibold text-center text-red-500">Invalid City</div>
                 @endif
             </div>
         </form>

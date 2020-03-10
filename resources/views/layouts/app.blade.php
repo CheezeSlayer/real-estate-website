@@ -73,7 +73,7 @@
           <nav class="flex items-center justify-between flex-wrap bg-gray-700 p-2 px-24">
             <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto shadow-xl">
               <div class="text-xl lg:flex-grow">
-                <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-orange-500 hover:text-white mr-2">
+                <a href="/" class="block mt-4 lg:inline-block lg:mt-0 text-orange-500 hover:text-white mr-2">
                     <img src='{{ asset('images/logo.png') }}'>
                 </a>
               </div>
@@ -82,7 +82,7 @@
                     FIND A HOME
                 </a>
                 <span class="block mt-4 lg:inline-block lg:mt-0 text-orange-500 hover:text-white mr-2">|</span>
-                <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-orange-500 hover:text-white mr-2">
+                <a href="/agent/list/" class="block mt-4 lg:inline-block lg:mt-0 text-orange-500 hover:text-white mr-2">
                     FIND AN AGENT
                 </a>
                 <span class="block mt-4 lg:inline-block lg:mt-0 text-orange-500 hover:text-white mr-2">|</span>

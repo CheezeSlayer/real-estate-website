@@ -39,7 +39,7 @@
                             </select>
 
                             @error('province')
-                            <small class="text-red-400">{{ $message }}</small>
+                            <small class="text-red-500">{{ $message }}</small>
                             @enderror
                         </div>
 
@@ -49,7 +49,7 @@
                                 aria-describedby="cityHelp" placeholder="City...">
                             <small id="cityHelp" class="block">Enter the home city</small>
                             @error('city')
-                            <small class="text-red-400">{{ $message }}</small>
+                            <small class="text-red-500">{{ $message }}</small>
                             @enderror
                         </div>
 
@@ -59,7 +59,7 @@
                                 aria-describedby="addressHelp" placeholder="Number + Street">
                             <small id="addressHelp" class="block">Enter the home city</small>
                             @error('address')
-                            <small class="text-red-400">{{ $message }}</small>
+                            <small class="text-red-500">{{ $message }}</small>
                             @enderror
                         </div>
 
@@ -69,7 +69,7 @@
                                 aria-describedby="postal_codeHelp" placeholder="Zip / Postal code">
                             <small id="postal_codeHelp" class="block">Enter the home city</small>
                             @error('postal_code')
-                            <small class="text-red-400">{{ $message }}</small>
+                            <small class="text-red-500">{{ $message }}</small>
                             @enderror
                         </div>
 
@@ -111,7 +111,7 @@
                                         aria-describedby="bedroomsHelp" placeholder="# bedrooms">
                                     <small id="bedroomsHelp" class="block">Enter number of bedrooms</small>
                                     @error('bedrooms')
-                                    <small class="text-red-400">{{ $message }}</small>
+                                    <small class="text-red-500">{{ $message }}</small>
                                     @enderror
                                 </div>
                                 <div class="w-full">
@@ -120,7 +120,7 @@
                                         aria-describedby="bathroomsHelp" placeholder="# bathrooms">
                                     <small id="bathroomsHelp" class="block">Enter number of bathrooms</small>
                                     @error('bathrooms')
-                                    <small class="text-red-400">{{ $message }}</small>
+                                    <small class="text-red-500">{{ $message }}</small>
                                     @enderror
                                 </div>
                             </div>
@@ -132,7 +132,7 @@
                                 aria-describedby="floor_spaceHelp" placeholder="Floor Space">
                             <small id="floor_spaceHelp" class="block">Enter Floor Space</small>
                             @error('floor_space')
-                            <small class="text-red-400">{{ $message }}</small>
+                            <small class="text-red-500">{{ $message }}</small>
                             @enderror
                         </div>
 
@@ -142,7 +142,7 @@
                                 aria-describedby="priceHelp" placeholder="Price">
                             <small id="priceHelp" class="block">Enter Estimated Pricing of Home</small>
                             @error('price')
-                            <small class="text-red-400">{{ $message }}</small>
+                            <small class="text-red-500">{{ $message }}</small>
                             @enderror
                         </div>
 
@@ -154,7 +154,7 @@
                             </div>
                             <small id="descriptionHelp" class="block">Add a Short Description of Home</small>
                             @error('description')
-                            <small class="text-red-400">{{ $message }}</small>
+                            <small class="text-red-500">{{ $message }}</small>
                             @enderror
                         </div>
 

@@ -1,12 +1,12 @@
 @extends('layouts.app')
 @section('content')
 
-@include('layouts.search')
+@include('home.layouts.home_search')
 
 <div class="flex flex-wrap justify-center bg-gray-700">
     @foreach($homes as $home)
     
-    <div class="flex-grow-0 w-64 rounded-lg overflow-hidden shadow-lg bg-gray-500 m-4 p-4" id="home{{$home->id}}">
+    <div class="flex-grow-0 w-64 rounded-lg overflow-hidden shadow-lg bg-gray-500 m-4 p-4" id="home-{{$home->id}}">
         <a href="/home/{{$home->id}}">
             <div class="flex justify-between items-baseline p-3 pb-5 bg-gray-600 rounded-lg">
                 <div class="font-bold text-xl mb-2">${{ $home->price }}</div>

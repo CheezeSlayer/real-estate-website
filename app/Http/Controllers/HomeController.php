@@ -10,10 +10,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Show the application dashboard.
@@ -22,12 +22,10 @@ class HomeController extends Controller
      */
     public function show(\App\Home $home)
     {
-        return view('admin.home.show', compact('home'));
+        return view('home.home_show', compact('home'));
     }
 
     public function list() {
-        
-        // dd($homes);
         if( empty($homes) ) {
             $homes = \App\Home::all();
         }
@@ -35,15 +33,7 @@ class HomeController extends Controller
         foreach($homes as $home) {
             $home->price = number_format($home->price);
         }
-        return view('admin.home.list', compact('homes'));
-    }
-
-    public function create() {
-        return view('admin.home.create');
-    }
-
-    public function edit(\App\Home $home) {
-        return view('admin.home.edit', compact('home'));
+        return view('home.home_list', compact('homes'));
     }
 
     private function is_not_null($var) {
@@ -61,8 +51,6 @@ class HomeController extends Controller
             'bathrooms' => 'nullable',
             'floor_space' => 'nullable',
             'price' => 'nullable',
-
-            // 'toggle_advanced_options' => 'nullable'
         ]);
         $query = [];
         $data = array_filter($data, array($this, "is_not_null"));
@@ -70,6 +58,15 @@ class HomeController extends Controller
             array_push($query, [$key, '=', $data[$key]] );
         };
         $homes= \DB::table('homes')->where($query)->get();
-        return view('admin.home.list', compact('homes'))->withInput($request->flash());
+        return view('home.list', compact('homes'))->withInput($request->flash());
+    }
+
+    // Administrator Home Views
+    public function create() {
+        return view('admin.home.home_create');
+    }
+
+    public function edit(\App\Home $home) {
+        return view('admin.home.home_edit', compact('home'));
     }
 }
