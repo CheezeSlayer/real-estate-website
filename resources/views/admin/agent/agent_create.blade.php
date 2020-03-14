@@ -2,15 +2,6 @@
 
 @section('content')
 
-<div class="flex justify-center" id="status">
-    @if(session('success'))
-        <div class="flex-initial p-2 m-2 bg-gray-800 rounded text-base text-semibold text-center text-green-500">{{ session('success') }}</div>
-    @endif
-    @if(session('error'))
-        <div class="flex-initial p-2 m-2 bg-gray-800 rounded text-base text-semibold text-center text-red-500">{{ session('error') }}</div>
-    @endif
-</div>
-
 <div class="flex justify-center bg-gray-700">
     <div class="w-1/2 bg-gray-800 rounded-lg shadow-xl p-6">
         <div class="text-semibold text-3xl text-center text-orange-500 pb-4">Add Agent</div>
@@ -63,7 +54,7 @@
                 <div class="p-2">
                     <label class="block" for="last_name">Last Name</label>
                     <input name="last_name" type="text" class="w-full rounded p-2 bg-gray-800" id="last_name" value="{{old('last_name')}}"
-                        aria-describedby="last_nameHelp" placeholder="Zip / Postal code">
+                        aria-describedby="last_nameHelp" placeholder="Last Name">
                     @error('last_name')
                     <small class="text-red-500">{{ $message }}</small>
                     @enderror
@@ -71,9 +62,18 @@
 
                 <div class="p-2">
                     <label class="block" for="email">Email</label>
-                    <input name="email" type="text" class="w-full rounded p-2 bg-gray-800" id="email" value="{{old('postal_code')}}"
+                    <input name="email" type="text" class="w-full rounded p-2 bg-gray-800" id="email" value="{{old('email')}}"
                         aria-describedby="emailHelp" placeholder="agent@laravelrealtor.com">
-                    @error('postal_code')
+                    @error('email')
+                    <small class="text-red-500">{{ $message }}</small>
+                    @enderror
+                </div>
+
+                <div class="p-2">
+                    <label class="block" for="phone_number">Phone Number</label>
+                    <input name="phone_number" type="text" class="w-full rounded p-2 bg-gray-800" id="email" value="{{old('phone_number')}}"
+                        aria-describedby="phone_numberHelp" placeholder="Ex. 6045998616">
+                    @error('phone_number')
                     <small class="text-red-500">{{ $message }}</small>
                     @enderror
                 </div>

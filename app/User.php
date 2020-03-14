@@ -40,4 +40,8 @@ class User extends Authenticatable
     public function home() {
         return $this->hasMany(Home::class);
     }
+
+    public function agent() {
+        return $this->hasMany(Agent::class);
+    }
 }

@@ -2,6 +2,9 @@
 @section('content') 
 
 <div class="flex justify-center">
+    <div class="m-6">
+        <img class="rounded" src='{{ asset('images/placeholder_house.jpg') }}'>
+    </div>
     <div class="w-1/2 bg-gray-800 m-6 p-6 rounded text-gray-500">
         <div class="text-orange-500">
             <div class="font-bold text-3xl mb-2">${{number_format($home->price)}}</div>

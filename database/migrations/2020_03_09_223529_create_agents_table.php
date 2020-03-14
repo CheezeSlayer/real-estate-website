@@ -20,7 +20,9 @@ class CreateAgentsTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('email');
-            $table->json('homes');
+            $table->string('phone_number');
+            $table->json('homes')->nullable();
+            $table->unsignedBigInteger('user_id')->default(0);
             $table->timestamps();
         });
     }

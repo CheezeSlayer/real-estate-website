@@ -10,11 +10,7 @@ class HomeController extends Controller
      *
      * @return void
      */
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
-
+    
     /**
      * Show the application dashboard.
      *
@@ -58,7 +54,7 @@ class HomeController extends Controller
             array_push($query, [$key, '=', $data[$key]] );
         };
         $homes= \DB::table('homes')->where($query)->get();
-        return view('home.list', compact('homes'))->withInput($request->flash());
+        return view('home.home_list', compact('homes'))->withInput($request->flash());
     }
 
     // Administrator Home Views

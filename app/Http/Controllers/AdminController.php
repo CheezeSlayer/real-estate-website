@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Home;
+use App\Agent;
 
 class AdminController extends Controller
 {
@@ -17,7 +18,8 @@ class AdminController extends Controller
         return view('admin.index');
     }
 
-    public function store(Request $request) {
+    // Admin Home Functions
+    public function home_store(Request $request) {
         $data = $request->validate([
             'province' => 'required|not_in:choose',
             'city' => 'required',
@@ -44,12 +46,12 @@ class AdminController extends Controller
         return redirect('/admin')->with('success', 'New Home Registered');
     }
 
-    public function destroy(Home $home) {
+    public function home_destroy(Home $home) {
         $home->delete();
-        return redirect()->action('HomeController@list');
+        return redirect()->action('HomeController@list')->with('success', 'Home Delete Success');
     }
 
-    public function update(Home $home, Request $request) {
+    public function home_update(Home $home, Request $request) {
         $data = $request->validate([
             'province' => 'required|not_in:choose',
             'city' => 'required',
@@ -68,6 +70,8 @@ class AdminController extends Controller
             ['address', '=', $data['address']],
             ['postal_code', '=', $data['postal_code']],
         ];
+
+        $data['user_id'] = auth()->user()->id;
         $home_exists = \DB::table('homes')->where($query)->exists();
         if( $home_exists == true ) {
             return redirect()->back()->with('error', 'Record Already Exists')->withInput();
@@ -86,5 +90,69 @@ class AdminController extends Controller
         ]);
         $home->save();
         return redirect()->back()->withInput($request->flash())->with('success', 'Home Updated');
+    }
+
+    // Admin Agent Functions
+    public function agent_store(Request $request) {
+        $data = $request->validate([
+            'province' => 'required:not_in:choose',
+            'city' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required',
+            'phone_number' => 'required|regex:/[2-9][0-9]{9}/'
+        ]);
+
+        $query = [
+            ['province', '=', $data['province']],
+            ['city', '=', $data['city']],
+            ['first_name', '=', $data['first_name']],
+            ['last_name', '=', $data['last_name']],
+        ];
+        
+        $data['user_id'] = auth()->user()->id;
+        $agent = \DB::table('agents')->where($query)->exists();
+        if( $agent == true ) {
+            return redirect('/admin/agent/create')->with('error', 'Record Already Exists')->withInput();
+        }
+        $agent = auth()->user()->agent()->create($data);
+        return redirect('/admin')->with('success', 'New Agent Registered');
+    }
+
+    public function agent_destroy(Agent $agent) {
+        $agent->delete();
+        return redirect()->action('AgentController@list')->with('success', 'Agent Delete Success');
+    }
+
+    public function agent_update(Agent $agent, Request $request) {
+        $data = $request->validate([
+            'province' => 'required|not_in:choose',
+            'city' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required',
+        ]);
+        $query = [
+            ['province', '=', $data['province']],
+            ['city', '=', $data['city']],
+            ['first_name', '=', $data['first_name']],
+            ['last_name', '=', $data['last_name']],
+            ['email', '=', $data['email']],
+        ];
+
+        $data['user_id'] = auth()->user()->id;
+        $agent_exists = \DB::table('agents')->where($query)->exists();
+        if( $agent_exists == true ) {
+            return redirect()->back()->with('error', 'Record Already Exists')->withInput();
+        };
+        $agent->fill([
+            'province' => $data['province'],
+            'city' =>  $data['city'],
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+            'email' => $data['email']
+        ]);
+        $agent->save();
+        return redirect()->back()->withInput($request->flash())->with('success', 'Agent Updated');
     }
 }

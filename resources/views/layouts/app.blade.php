@@ -22,7 +22,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="flex items-center justify-between flex-wrap bg-gray-800 p-2 px-24">
+          <nav class="flex items-center justify-between flex-wrap bg-gray-800 p-2 px-24">
             <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
               @guest
                 <div class="text-sm lg:flex-grow">
@@ -96,6 +96,14 @@
               </div>
             </div>
           </nav>
+        <div class="flex justify-center bg-gray-700 p-4">
+          @if(session('success'))
+            <div class="flex-initial bg-gray-800 rounded p-2 text-base text-semibold text-center text-green-500">{{ session('success') }}</div>
+          @endif
+          @if(session('error'))
+            <div class="flex-initial bg-gray-800 rounded p-2 text-base text-semibold text-center text-red-500">{{ session('error') }}</div>
+          @endif
+        </div>
         <main class="h-screen bg-gray-700">
             @yield('content')
         </main>

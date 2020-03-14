@@ -2,15 +2,6 @@
 
 @section('content')
 
-<div class="flex justify-center" id="status">
-    @if(session('success'))
-        <div class="flex-initial p-2 m-2 bg-gray-800 rounded text-base text-semibold text-center text-green-500">{{ session('success') }}</div>
-    @endif
-    @if(session('error'))
-        <div class="flex-initial p-2 m-2 bg-gray-800 rounded text-base text-semibold text-center text-red-500">{{ session('error') }}</div>
-    @endif
-</div>
-
 <div class="flex justify-center bg-gray-700">
     <div class="w-1/2 bg-gray-800 rounded-lg shadow-xl p-6">
         <div class="">

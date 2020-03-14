@@ -11,4 +11,12 @@ class Agent extends Model
     protected $casts = [
         'homes' => 'array',
     ];
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+    
+    public function home() {
+        return $this->hasMany(Home::class);
+    }
 }
