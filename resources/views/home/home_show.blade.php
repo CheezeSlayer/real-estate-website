@@ -17,7 +17,7 @@
         <div class="p-3 bg-gray-700 rounded text-gray-200">
             <p>{{ $home->description }}</p>
         </div>
-        @if(Auth::user()->is_admin)
+        @if(isset(Auth::user()->is_admin) && Auth::user()->is_admin)
             <div class="flex justify-end text-orange-500 mt-2">
                 <form action="/admin/home/{{ $home->id }}/edit" method="get">
                     @csrf

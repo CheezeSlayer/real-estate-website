@@ -23,6 +23,11 @@ Route::get('/home/list/search', 'HomeController@index');
 Route::get('/agent/list', 'AgentController@list');
 Route::get('/agent/{agent}', 'AgentController@show');
 
+// Careers
+Route::get('/careers', function() {
+    return view('./career/careers');
+});
+
 
 // Admin
 Route::get('/admin', 'AdminController@index')->name('admin')->middleware('is_admin');

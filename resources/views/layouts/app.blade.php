@@ -86,7 +86,7 @@
                     FIND AN AGENT
                 </a>
                 <span class="block mt-4 lg:inline-block lg:mt-0 text-orange-500 hover:text-white mr-2">|</span>
-                <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-orange-500 hover:text-white mr-2">
+                <a href="/careers/" class="block mt-4 lg:inline-block lg:mt-0 text-orange-500 hover:text-white mr-2">
                     CAREERS
                 </a>
                 <span class="block mt-4 lg:inline-block lg:mt-0 text-orange-500 hover:text-white mr-2">|</span>
